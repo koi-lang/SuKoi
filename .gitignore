@@ -26,3 +26,12 @@ hs_err_pid*
 *.iml
 out
 gen
+
+# Other files
+*.ipr
+*.iws
+build/
+.gradle/
+gradle/
+gradlew
+gradlew.bat

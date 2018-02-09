@@ -1,0 +1,29 @@
+apply plugin: 'antlr'
+apply plugin: 'idea'
+
+dependencies {
+    antlr "org.antlr:antlr4:4.5.1"
+    compile "org.antlr:antlr4-runtime:4.5.1"
+}
+
+generateGrammarSource {
+    maxHeapSize = "64m"
+    arguments += ["-package", "grammars"]
+    outputDirectory = new File("gen-src/antlr4/main/grammars".toString())
+}
+
+compileJava.dependsOn generateGrammarSource
+
+sourceSets {
+    generated {
+        java.srcDir "gen-src/main/antlr4"
+    }
+}
+
+compileJava.source sourceSets.generated.java, sourceSets.main.java
+
+idea {
+    module {
+        sourceDirs += file("gen-src/antlr4/main")
+    }
+}

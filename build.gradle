@@ -1,22 +1,24 @@
 apply plugin: 'antlr'
+apply plugin: 'kotlin'
 apply plugin: 'idea'
 
 dependencies {
     antlr "org.antlr:antlr4:4.5.1"
     compile "org.antlr:antlr4-runtime:4.5.1"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 }
 
 generateGrammarSource {
     maxHeapSize = "64m"
     arguments += ["-package", "grammars"]
-    outputDirectory = new File("gen-src/antlr4/main/grammars".toString())
+    outputDirectory = new File("target/generated-sources/antlr4/grammars".toString())
 }
 
 compileJava.dependsOn generateGrammarSource
 
 sourceSets {
     generated {
-        java.srcDir "gen-src/main/antlr4"
+        java.srcDir "target/generated-sources/antlr4/grammars"
     }
 }
 
@@ -24,6 +26,29 @@ compileJava.source sourceSets.generated.java, sourceSets.main.java
 
 idea {
     module {
-        sourceDirs += file("gen-src/antlr4/main")
+        sourceDirs += file("target/generated-sources/antlr4/main")
+    }
+}
+
+buildscript {
+    ext.kotlin_version = '1.2.21'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+repositories {
+    mavenCentral()
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }

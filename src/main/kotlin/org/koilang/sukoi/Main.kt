@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.*
 import org.antlr.v4.runtime.tree.ParseTreeWalker
 
 fun main(args: Array<String>) {
-    val inputStream = ANTLRInputStream("print(\"Hello\")")
+    val inputStream = ANTLRInputStream("print(\"Hello\", \"World!\")")
     val lexer = KoiLexer(inputStream)
     val commonTokenStream = CommonTokenStream(lexer)
     val parser = KoiParser(commonTokenStream)

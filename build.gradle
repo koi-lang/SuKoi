@@ -10,15 +10,15 @@ dependencies {
 
 generateGrammarSource {
     maxHeapSize = "64m"
-    arguments += ["-package", "grammars"]
-    outputDirectory = new File("target/generated-sources/antlr4/grammars".toString())
+    arguments += ["-package", "org.koilang.sukoi"]
+    outputDirectory = new File("target/generated-sources/antlr4/main/org/koilang/sukoi".toString())
 }
 
 compileJava.dependsOn generateGrammarSource
 
 sourceSets {
     generated {
-        java.srcDir "target/generated-sources/antlr4/grammars"
+        java.srcDir "target/generated-sources/antlr4"
     }
 }
 

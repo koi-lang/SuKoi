@@ -1,28 +1,55 @@
+buildscript {
+    ext.kotlin_version = '1.2.21'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.antlr:antlr4-runtime:4.7.1"
+    }
+}
+
 apply plugin: 'antlr'
+apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'idea'
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    antlr "org.antlr:antlr4:4.5.1"
-    compile "org.antlr:antlr4-runtime:4.5.1"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-}
+    compile "org.antlr:antlr4-runtime:4.7.1"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
-generateGrammarSource {
-    maxHeapSize = "64m"
-    arguments += ["-package", "org.koilang.sukoi"]
-    outputDirectory = new File("target/generated-sources/antlr4/main/org/koilang/sukoi".toString())
+    antlr "org.antlr:antlr4:4.7.1"
 }
-
-compileJava.dependsOn generateGrammarSource
 
 sourceSets {
+    main {
+        kotlin {
+            srcDirs += "src/main/kotlin"
+        }
+    }
+
     generated {
         java.srcDir "target/generated-sources/antlr4"
     }
 }
 
-compileJava.source sourceSets.generated.java, sourceSets.main.java
+generateGrammarSource {
+    maxHeapSize = "64m"
+    arguments += ["-package", "org.koilang.sukoi"]
+    outputDirectory = new File("target/generated-sources/antlr4".toString())
+}
+
+compileGeneratedJava {
+    dependsOn generateGrammarSource
+    source = sourceSets.generated.java
+    source += sourceSets.main.java
+}
 
 idea {
     module {
@@ -30,25 +57,11 @@ idea {
     }
 }
 
-buildscript {
-    ext.kotlin_version = '1.2.21'
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-repositories {
-    mavenCentral()
-}
 compileKotlin {
+    dependsOn compileGeneratedJava
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
 }
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
+compileKotlin.dependsOn.remove("compileJava")

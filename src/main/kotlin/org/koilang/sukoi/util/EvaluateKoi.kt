@@ -1,4 +1,4 @@
-package org.koilang.sukoi
+package org.koilang.sukoi.util
 
 import grammars.KoiParser
 
@@ -22,28 +22,4 @@ fun koiValue(value: String): String {
     } else {
         return value
     }
-}
-
-fun isSingleString(value: String): Boolean {
-    if (value.startsWith("\"") && value.endsWith("\"")) {
-        return true
-    }
-
-    return false
-}
-
-fun isLitString(value: String): Boolean {
-    if (value.startsWith("'") && value.endsWith("'")) {
-        return true
-    }
-
-    return false
-}
-
-fun isMultiString(value: String): Boolean {
-    if (value.startsWith("`") && value.endsWith("`")) {
-        return true
-    }
-
-    return false
 }

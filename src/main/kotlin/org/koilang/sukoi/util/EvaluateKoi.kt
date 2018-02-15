@@ -18,8 +18,19 @@ fun koiPrint(valueList: List<KoiParser.ValueContext>): String {
 
 fun koiValue(value: String): String {
     if (isSingleString(value) || isLitString(value) || isMultiString(value)) {
-        return value.substring(1, value.length - 1)
+        return koiString(value)
     } else {
         return value
     }
+}
+
+fun koiString(value: String): String {
+    var stringValue = value.substring(1, value.length - 1)
+
+    if (isSingleString(value)) {
+        stringValue = stringValue.replace("\\n", "\n")
+                .replace("\\r", "\r")
+    }
+
+    return stringValue
 }

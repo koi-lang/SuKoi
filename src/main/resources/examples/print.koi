@@ -1,7 +1,7 @@
 print("Hello World!\n")
 println("Hello World!")
 
-print('Hello World!\n')
+println('Hello World!\n')
 
-print(`Hello
+println(`Hello
 World!`)

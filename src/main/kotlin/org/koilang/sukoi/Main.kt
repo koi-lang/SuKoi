@@ -8,7 +8,7 @@ import org.koilang.sukoi.util.FileLoader
 import java.io.FileInputStream
 
 fun main(args: Array<String>) {
-    val inputStream = ANTLRInputStream(FileInputStream(FileLoader.loadFromResources("examples/print.koi")))
+    val inputStream = ANTLRInputStream(FileInputStream(FileLoader.loadFromResources("examples/variables.koi")))
     val lexer = KoiLexer(inputStream)
     val commonTokenStream = CommonTokenStream(lexer)
     val parser = KoiParser(commonTokenStream)

@@ -8,11 +8,11 @@ class KoiInterpreter : KoiBaseListener() {
     private val variables = HashMap<String?, Any?>()
 
     override fun enterPrint(ctx: KoiParser.PrintContext?) {
-        print(koiPrint(ctx?.value()!!.toList()))
+        print(koiPrint(ctx?.value()!!.toList(), variables))
     }
 
     override fun enterPrintLine(ctx: KoiParser.PrintLineContext?) {
-        println(koiPrint(ctx?.value()!!.toList()))
+        println(koiPrint(ctx?.value()!!.toList(), variables))
     }
 
     override fun enterAsstmt(ctx: KoiParser.AsstmtContext?) {

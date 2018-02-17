@@ -2,11 +2,11 @@ package org.koilang.sukoi.util
 
 import grammars.KoiParser
 
-fun koiPrint(valueList: List<KoiParser.ValueContext>): String {
+fun koiPrint(valueList: List<KoiParser.ValueContext>, variables: HashMap<String?, Any?> = HashMap()): String {
     var printValue = ""
 
     for (item in valueList) {
-        printValue += koiValue(item.text)
+        printValue += koiValue(item.text, variables)
 
         if (item != valueList[valueList.size - 1]) {
             printValue += " "
@@ -16,10 +16,14 @@ fun koiPrint(valueList: List<KoiParser.ValueContext>): String {
     return printValue
 }
 
-fun koiValue(value: String): String {
+fun koiValue(value: String, variables: HashMap<String?, Any?> = HashMap()): String {
     if (isSingleString(value) || isLitString(value) || isMultiString(value)) {
         return koiString(value)
-    } else {
+    }
+    else if (value in variables.keys) {
+        return koiValue(variables[value].toString())
+    }
+    else {
         return value
     }
 }

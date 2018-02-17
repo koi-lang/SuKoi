@@ -1,2 +1,6 @@
 var first: "Hello"
 var second: "World!"
+
+println(first, second)
+
+# var final: first + " " + second

@@ -1,4 +1,3 @@
 [submodule "src/main/antlr4/grammars"]
 	path = src/main/antlr4/grammars
-	url = https://github.com/koi-lang/grammars.git
-	branch = koi
+	url = https://github.com/koi-lang/koi-grammar

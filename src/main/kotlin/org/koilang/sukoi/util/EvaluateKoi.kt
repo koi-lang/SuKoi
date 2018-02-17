@@ -17,14 +17,17 @@ fun koiPrint(valueList: List<KoiParser.ValueContext>, variables: HashMap<String?
 }
 
 fun koiValue(value: String, variables: HashMap<String?, Any?> = HashMap()): String {
-    if (isSingleString(value) || isLitString(value) || isMultiString(value)) {
+    if (isString(value)) {
         return koiString(value)
     }
-    else if (value in variables.keys) {
+    else if (isVariable(value, variables)) {
         return koiValue(variables[value].toString())
     }
-    else {
+    else if (isInteger(value) || isBoolean(value)) {
         return value
+    }
+    else {
+        throw Exception("Invalid value")
     }
 }
 

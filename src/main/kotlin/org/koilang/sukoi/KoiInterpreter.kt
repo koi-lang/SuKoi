@@ -10,11 +10,11 @@ class KoiInterpreter : KoiBaseListener() {
     private var value = ""
 
     override fun enterPrint(ctx: KoiParser.PrintContext?) {
-        print(koiPrint(ctx?.value()!!.toList(), variables))
+        print(koiPrint(ctx?.true_value()!!.toList(), variables))
     }
 
     override fun enterPrintLine(ctx: KoiParser.PrintLineContext?) {
-        println(koiPrint(ctx?.value()!!.toList(), variables))
+        println(koiPrint(ctx?.true_value()!!.toList(), variables))
     }
 
     override fun exitAsstmt(ctx: KoiParser.AsstmtContext?) {

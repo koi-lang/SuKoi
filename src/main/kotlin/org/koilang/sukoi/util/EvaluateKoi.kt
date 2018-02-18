@@ -2,7 +2,7 @@ package org.koilang.sukoi.util
 
 import grammars.KoiParser
 
-fun koiPrint(valueList: List<KoiParser.ValueContext>, variables: HashMap<String?, Any?> = HashMap()): String {
+fun koiPrint(valueList: List<KoiParser.True_valueContext>, variables: HashMap<String?, Any?> = HashMap()): String {
     var printValue = ""
 
     for (item in valueList) {

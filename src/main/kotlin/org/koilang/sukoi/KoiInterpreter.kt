@@ -7,6 +7,8 @@ import org.koilang.sukoi.util.*
 class KoiInterpreter : KoiBaseListener() {
     private val variables = HashMap<String?, Any?>()
 
+    private var value = ""
+
     override fun enterPrint(ctx: KoiParser.PrintContext?) {
         print(koiPrint(ctx?.value()!!.toList(), variables))
     }
@@ -15,7 +17,11 @@ class KoiInterpreter : KoiBaseListener() {
         println(koiPrint(ctx?.value()!!.toList(), variables))
     }
 
-    override fun enterAsstmt(ctx: KoiParser.AsstmtContext?) {
-        variables[ctx?.ID()?.text] = ctx?.value()?.text
+    override fun exitAsstmt(ctx: KoiParser.AsstmtContext?) {
+        variables[ctx?.ID()?.text] = value
+    }
+
+    override fun enterValue(ctx: KoiParser.ValueContext?) {
+        value = ctx?.text!!
     }
 }

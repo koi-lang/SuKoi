@@ -13,7 +13,7 @@ abstract class Object {
     }
 
     abstract fun toBoolean(): Boolean
-    abstract fun toChar(): Char
+    abstract fun toChar(): Character
     abstract fun toFloat(): Float
     abstract fun toInteger(): Integer
 

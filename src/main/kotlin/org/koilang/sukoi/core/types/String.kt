@@ -2,7 +2,7 @@ package org.koilang.sukoi.core.types
 
 import org.koilang.sukoi.core.collections.Array
 
-class String(private var values: ArrayList<out Object>) : Array<Char?>(values) {
+class String(private var values: ArrayList<out Object>) : Array<Character?>(values) {
     override fun toString(): String {
         return String(values)
     }

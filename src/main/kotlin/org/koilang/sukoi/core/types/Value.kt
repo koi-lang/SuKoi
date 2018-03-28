@@ -5,7 +5,7 @@ abstract class Value : Object() {
         return Boolean(true)
     }
 
-    override fun toChar(): Char {
+    override fun toChar(): Character {
         TODO("not implemented")
     }
 

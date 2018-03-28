@@ -1,6 +1,7 @@
 package org.koilang.sukoi.core.types
 
-import kotlin.Char
-
-class Char(private var value: Char) : Value() {
+class Char(private var value: kotlin.Char) : Value() {
+    override fun toChar(): org.koilang.sukoi.core.types.Char {
+        return Char(value)
+    }
 }

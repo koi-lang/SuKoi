@@ -1,6 +1,7 @@
 package org.koilang.sukoi.core.types
 
-import kotlin.Boolean
-
-class Boolean(private var value: Boolean) : Value() {
+class Boolean(private var value: kotlin.Boolean) : Value() {
+    override fun toBoolean(): Boolean {
+        return Boolean(value)
+    }
 }

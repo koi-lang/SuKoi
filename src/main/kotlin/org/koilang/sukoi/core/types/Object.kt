@@ -1,6 +1,6 @@
 package org.koilang.sukoi.core.types
 
-open class Object {
+abstract class Object {
     fun new() {}
 
     fun equals(other: Object): Boolean {
@@ -11,4 +11,11 @@ open class Object {
             return Boolean(false)
         }
     }
+
+    abstract fun toBoolean(): Boolean
+    abstract fun toChar(): Char
+    abstract fun toFloat(): Float
+    abstract fun toInteger(): Integer
+
+    abstract fun toString(): String
 }

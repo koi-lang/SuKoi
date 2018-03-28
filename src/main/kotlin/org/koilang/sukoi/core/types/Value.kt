@@ -9,6 +9,10 @@ abstract class Value : Object() {
         TODO("not implemented")
     }
 
+    override fun toDouble(): Double {
+        TODO("not implemented")
+    }
+
     override fun toFloat(): Float {
         TODO("not implemented")
     }

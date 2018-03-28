@@ -1,7 +1,14 @@
 package org.koilang.sukoi.core.types
 
 abstract class Object {
-    fun new() {}
+    fun new() {
+        constructor()
+        initializer()
+    }
+    fun constructor() {}
+    fun initializer() {}
+
+    fun call() {}
 
     fun equals(other: Object): Boolean {
         if (this == other) {

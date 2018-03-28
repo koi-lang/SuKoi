@@ -1,4 +1,4 @@
 package org.koilang.sukoi.core.types
 
-class None : Object() {
+class None : Reference() {
 }

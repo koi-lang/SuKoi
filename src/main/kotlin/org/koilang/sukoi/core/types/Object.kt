@@ -6,6 +6,8 @@ abstract class Object {
         initializer()
     }
     fun constructor() {}
+    fun deconstructor() {}
+
     fun initializer() {}
 
     fun call() {}
@@ -19,11 +21,11 @@ abstract class Object {
         }
     }
 
-    abstract fun toBoolean(): Boolean
-    abstract fun toChar(): Character
-    abstract fun toDouble(): Double
-    abstract fun toFloat(): Float
-    abstract fun toInteger(): Integer
+    abstract fun asBoolean(): Boolean
+    abstract fun asCharacter(): Character
+    abstract fun asDouble(): Double
+    abstract fun asFloat(): Float
+    abstract fun asInteger(): Integer
 
-    abstract fun toString(): String
+    abstract fun asString(): String
 }

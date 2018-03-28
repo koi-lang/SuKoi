@@ -1,27 +1,27 @@
 package org.koilang.sukoi.core.types
 
 abstract class Reference : Object() {
-    override fun toBoolean(): Boolean {
+    override fun asBoolean(): Boolean {
         return Boolean(true)
     }
 
-    override fun toChar(): Character {
+    override fun asCharacter(): Character {
         TODO("not implemented")
     }
 
-    override fun toDouble(): Double {
+    override fun asDouble(): Double {
         TODO("not implemented")
     }
 
-    override fun toFloat(): Float {
+    override fun asFloat(): Float {
         TODO("not implemented")
     }
 
-    override fun toInteger(): Integer {
+    override fun asInteger(): Integer {
         TODO("not implemented")
     }
 
-    override fun toString(): String {
+    override fun asString(): String {
         TODO("not implemented")
     }
 }

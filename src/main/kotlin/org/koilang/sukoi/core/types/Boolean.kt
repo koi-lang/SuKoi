@@ -5,7 +5,7 @@ class Boolean(private var value: kotlin.Boolean) : Value() {
         return Boolean(!value)
     }
 
-    override fun toBoolean(): Boolean {
+    override fun asBoolean(): Boolean {
         return Boolean(value)
     }
 }

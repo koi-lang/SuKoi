@@ -10,7 +10,6 @@ abstract class Object {
 
     fun initializer() {}
 
-    fun call() {}
 
     fun equals(other: Object): Boolean {
         if (this == other) {
